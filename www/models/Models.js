@@ -1164,7 +1164,7 @@ pacoteChaves(){
                                     <label class="form-check-label" for="pacote${temp}">
                                       <img src="assets/images/simbolo.svg" alt="Comprar ${n.qtd_chaves} Chaves" />  
                                       ${n.qtd_chaves} ${app.nomeMoedaPlural}
-                                      <small>À vista por R$ ${n.valor_blr.replace(".",",")}<br>Validade de ${n.validade_dias} dias</small>
+                                      <small>À vista por R$ ${n.valor_blr.replace(".",",")}<br>Validade ilimitada</small> <!-- de ${n.validade_dias} dias -->
                                       <span>
                                         <d>ou em até 4X de</d>
                                         R$ ${resultado.toFixed(2).replace(".",",")}
