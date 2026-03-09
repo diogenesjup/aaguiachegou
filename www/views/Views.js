@@ -2840,6 +2840,48 @@ class Views{
     }
 
 
+    
+
+    apagarConta(){
+       
+       this._content.html(`
+            
+               <div class="row view-comprar-chaves cursos-e-treinamentos cursos-e-treinamentos-aula" view-name="view-2">
+                  <div class="col-12 wow fadeInLeft" data-wow-delay="0.0s" data-wow-duration="0.3s">
+                     
+                                  <h2 style="text-align:center;">
+                                     Apagar minha conta
+                                  </h2>
+                                  <p>
+                                    <i class="fa fa-trash" style="font-size: 66px;position: relative;display: block;margin-left: auto;margin-right: auto;width: 100%;text-align: center;opacity: 0.25;margin-top: 35px;margin-bottom: 50px;"></i> 
+                                  </p>
+                                  <p style="text-align:center;">
+                                    Se você apagar sua conta, seus dados, informações e transações serão excluídas. Se você mudar de ideia, é só voltar a fazer login.
+                                  </p>
+                                  <p>&nbsp;</p>  
+                                  <div>
+                                    <button 
+                                       class="btn btn-primary"
+                                       onclick='app.acoesRemoverConta()'
+                                    >
+                                       Entendi e quero apagar minha conta</button>
+                                  </div>
+                                  
+                                 <p>&nbsp;</p>
+                                 <p>&nbsp;</p>
+                                 <p>&nbsp;</p>
+                                 <p>&nbsp;</p>
+
+                  </div>
+               </div>
+            
+            `);
+
+            this.animarTransicao();
+
+    }
+
+
     duvidasESuporte(){
 
       this._content.html(`
@@ -3010,7 +3052,7 @@ class Views{
 
                        
                          <div class="form-group link-apoio text-center">
-                            <a href="javascript:void(0)" onclick="app.initApp()" title="Criar uma conta">
+                            <a href="javascript:void(0)" onclick="app.logoff();" title="Criar uma conta">
                                 Cancelar
                             </a>
                          </div>

@@ -13,26 +13,26 @@ class App {
         this.helpers = new Helpers();
 
         this.nomeApp         = "A ÁGUIA CHEGOU";
-        this.linkApp         = "https://aaguiachegou.com/";
+        this.linkApp         = "https://aaguiachegou.com.br/";
         this.nomeMoeda       = "MOEDA";
         this.nomeMoedaPlural = "MOEDAS";
 
         if(ambiente=="HOMOLOGACAO"){
              
-            this.urlDom = "https://aaguiachegou.com/app/www/";
-            this.urlApi = "https://aaguiachegou.com/apiservicekeys/";
-            this.urlCdn = "https://aaguiachegou.com/cdn/";
+            this.urlDom = "https://aaguiachegou.com.br/app/www/";
+            this.urlApi = "https://aaguiachegou.com.br/apiservicekeys/";
+            this.urlCdn = "https://aaguiachegou.com.br/cdn/";
 
         }
         if(ambiente=="PRODUCAO"){
 
-            this.urlDom = "https://aaguiachegou.com/app/www/";
-            this.urlApi = "https://aaguiachegou.com/apiservicekeys/";
-            this.urlCdn = "https://aaguiachegou.com/cdn/";
+            this.urlDom = "https://aaguiachegou.com.br/app/www/";
+            this.urlApi = "https://aaguiachegou.com.br/apiservicekeys/";
+            this.urlCdn = "https://aaguiachegou.com.br/cdn/";
 
         }
 
-        this.urlApiPagto = "https://aaguiachegou.com/pay/";
+        this.urlApiPagto = "https://aaguiachegou.com.br/pay/";
 
         this.token = token;
         this.tokenSms = tokenSms;
@@ -644,6 +644,16 @@ filtrotabela(){
 
          this.views.configuracoes();
 
+    }
+
+    apagarConta(){
+
+         this.views.apagarConta();
+
+    }
+
+    acoesRemoverConta(){
+        confirmacao("Tem certeza que deseja remover sua conta?","Vamos excluir seus dados e informações.","aviso('Conta excluída com sucesso!','Sua conta foi desativada, e fizemos logoff da sua sessão no aplicativo.'); app.logoff();","Continuar");
     }
 
     duvidasESuporte(){
