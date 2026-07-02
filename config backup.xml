@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.fabricadeplugins.aaguiachegou"
-        version   = "1.4.5">
+        version   = "1.4.4">
 
         <!-- LEMBRAR DE MUDAR O APP ID ANTES DE SUBIR O APP NAS LOJAS -->
 
@@ -18,20 +18,39 @@
         A Águia Chegou
     </author>
  
-    <preference name="DisallowOverscroll" value="true" />
-    <preference name="Orientation" value="portrait" />
-    <preference name="StatusBarOverlaysWebView" value="false" />
+    <!--<engine name="android" spec="^13.0.0" />-->
+    <engine name="android" spec="^13.0.0" />
+    <preference name="android-build-tool" value="gradle" />
+    <preference name="orientation" value="portrait" />
+    <preference name="target-device" value="handset" />
+    <preference name="fullscreen" value="false" />
+    <preference name="webviewbounce" value="true" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="disable-cursor" value="false" />
+    <preference name="android-installLocation" value="auto" />
     <preference name="StatusBarBackgroundColor" value="#1b293b" />
-    <!--
+   
+    <preference name="AndroidWindowSplashScreenAnimatedIcon" value="www/assets/images/icones/splash.png" />
+    <preference name="AndroidWindowSplashScreenBackground" value="#1b293b" />
+
+    <preference name="android-minSdkVersion" value="32" />
+    <preference name="android-targetSdkVersion" value="35" />
+    <preference name="AndroidXEnabled" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#1b293b" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+
     <plugin name="cordova-plugin-camera" />
-    <plugin name="cordova-plugin-camera-preview" /> <plugin name="cordova-plugin-camera-preview" spec="https://github.com/sarriaroman/Cordova-Plugin-Camera-Preview.git" />
-    -->
+    <plugin name="cordova-plugin-camera-preview" />
 
     <!-- Plugin File Transfer -->
-    <!--<plugin name="cordova-plugin-file-transfer" />-->
+    <plugin name="cordova-plugin-file-transfer" />
 
     <!-- Plugin File (dependência do File Transfer) -->
-    <!--<plugin name="cordova-plugin-file" />-->
+    <plugin name="cordova-plugin-file" />
     
 
     <!--
@@ -41,49 +60,27 @@
     -->
 
 
-  
-
-    <!-- APENAS IOS 
-    <plugin name="cordova-plugin-splashscreen" spec="^6.0.0" />
-
-    <preference name="SplashScreen" value="screen" />
-    <preference name="AutoHideSplashScreen" value="true" />
-    <preference name="SplashScreenDelay" value="3000" />
-    <preference name="ShowSplashScreenSpinner" value="false" />
-    <preference name="FadeSplashScreen" value="true" />
-    <preference name="FadeSplashScreenDuration" value="300" />
-     APENAS IOS -->
-
-
-    <!--
+    
     <plugin name="cordova-plugin-android-permissions" />
     <plugin name="cordova-plugin-inappbrowser" />
     <plugin name="cordova-plugin-statusbar" />
-    <preference name="StatusBarBackgroundColor" value="#303030" />
-    -->
+    <preference name="StatusBarBackgroundColor" value="#1b293b" />
 
-    
-    
-    <!--
+    <plugin name="cordova-plugin-ionic-webview" />
+   
+
     <preference name="WKWebViewOnly" value="true" />
     <feature name="CDVWKWebViewEngine">
         <param name="ios-package" value="CDVWKWebViewEngine" />
     </feature>
     <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
-    -->
-    
+    <preference name="Scheme" value="https" />
+    <preference name="ScrollEnabled" value="true" />
 
     <platform name="android">
 
-        <preference name="Scheme" value="https" />
-        <preference name="ScrollEnabled" value="true" />
-        <plugin name="cordova-plugin-ionic-webview" />
-
         <preference name="android-gradlePluginVersion" value="8.5.1" />
         <preference name="android-gradleVersion" value="8.10.2" />
-
-        <preference name="android-minSdkVersion" value="32" />
-        <preference name="android-targetSdkVersion" value="35" />
 
         <icon density="ldpi" height="36" src="www/assets/images/icones/36.png" width="36" />
         <icon density="ldpi" height="40" src="www/assets/images/icones/40.png" width="40" />
@@ -117,17 +114,7 @@
         <allow-intent href="geo:*" />
     
     </platform>
-    
     <platform name="ios">
-        <splash src="www/assets/images/icones/1024x1024.png" />
-
-        <preference name="deployment-target" value="13.0" />
-        <preference name="WKWebViewOnly" value="true" />
-        
-        <allow-intent href="itms:*" />
-        <allow-intent href="itms-apps:*" />
-        <preference name="target-device" value="handset" />
-
         <icon density="ldpi" height="36" src="www/assets/images/icones/36.png" width="36" />
         <icon density="ldpi" height="40" src="www/assets/images/icones/40.png" width="40" />
         <icon density="mdpi" height="57" src="www/assets/images/icones/57.png" width="57" />
@@ -146,21 +133,15 @@
         <icon density="xxxhdpi" height="512" src="www/assets/images/icones/512.png" width="512" />
         <icon density="xxxhdpi" height="768" src="www/assets/images/icones/768.png" width="768" />
         <icon density="xxxhdpi" height="960" src="www/assets/images/icones/960.png" width="960" />
-
+        <icon density="xxxhdpi" height="1024" src="www/assets/images/icones/1024x1024.png" width="1024" />
         <icon height="20" src="www/assets/images/icones/20.png" width="20" />
+        <icon height="60" src="www/assets/images/icones/60.png" width="60" />
         <icon height="29" src="www/assets/images/icones/29.png" width="29" />
         <icon height="58" src="www/assets/images/icones/58.png" width="58" />
         <icon height="87" src="www/assets/images/icones/87.png" width="87" />
-        <icon height="60" src="www/assets/images/icones/60.png" width="60" />
-        <icon height="80" src="www/assets/images/icones/80.png" width="80" />
         <icon height="76" src="www/assets/images/icones/76.png" width="76" />
+        <icon height="152" src="www/assets/images/icones/152.png" width="152" />
         <icon height="167" src="www/assets/images/icones/167.png" width="167" />
-
-        <icon density="xxxhdpi" height="1024" src="www/assets/images/icones/1024x1024.png" width="1024" />
-
-        <plugin name="cordova-plugin-ionic-webview" spec="^5.0.0" />
-        <plugin name="cordova-plugin-whitelist" spec="^1.3.4" />
-        <plugin name="cordova-plugin-statusbar" spec="^2.4.3" />
     </platform>
 
     

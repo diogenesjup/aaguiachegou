@@ -2893,10 +2893,20 @@ class Views{
                                      Dúvidas e suporte
                                   </h2>
 
-                                  <p>
-                                    Tem alguma dúvida sobre como funciona a plataforma? Veja algumas perguntas e respostas que podem ser úteis. Você também
-                                    pode enviar um e-mail para <b>suporte@resolvaja.tec.br</b>
+                                  <p style="font-size:14px;">
+                                    Tem alguma dúvida sobre como funciona a plataforma?
                                   </p>
+                                  <p style="font-size:14px;">
+                                    Precisa de ajuda ou suporte?
+                                  </p>
+                                  <p style="font-size:14px;">
+                                    Deseja excluir ou remover os dados da sua conta?
+                                  </p>
+                                  <p style="font-size:14px;">
+                                    É só enviar um e-mail para <b>aguiachegou@gmail.com</b>, colocando no assunto a sua dúvida ou solicitação, que responderemos o mais rápido possível.
+                                  </p> 
+
+                                  <p>&nbsp;</p>
                                   
 
                                   <div id="itensSuporte">
