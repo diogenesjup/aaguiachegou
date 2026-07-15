@@ -104,6 +104,17 @@ class App {
         
     }
 
+    excluirConta(){
+        confirmacao("Tem certeza que deseja excluir sua conta?","Sua conta será temporariamente excluída e suas informações serão apagadas, mas poderá ser reativada se você fizer login novamente. Se concorda com isso, é só confirmar.","app.logoff();","Sim, excluir");
+        
+
+        setTimeout(function(){ 
+            aviso("Deu certo!","Sua conta foi desativada. Para reativa-la é só realizar o login novamente.");
+        }, 2000);
+   
+   
+    }
+
     logoff(){
        
         localStorage.clear();
