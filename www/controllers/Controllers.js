@@ -718,6 +718,11 @@ filtrotabela(){
     /* ABRIR OU FECHAR O MENU CLIENTE */
     abrirFecharMenuCliente(){
 
+       if(Sessao.bdLogado!="logado"){
+	      	app.viewLogin();
+	      	return;
+	    }  
+
       if($(".menu-adicional-cliente").hasClass("aberto")){
          
             $(".menu-adicional-cliente").removeClass("aberto");
@@ -826,11 +831,16 @@ class Sessao{
     }
 
     verificarLogado(){
+
+        app.opcoesCarretamentoPerfilCliente();
+            localStorage.setItem("selecaoPerfil","cliente");
+        
+        return;
       
-	      if(this.bdLogado!="logado"){
+	    if(this.bdLogado!="logado"){
 	      	app.viewLogin();
 	      	
-	      }
+	    }
 
     }
 

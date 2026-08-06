@@ -140,6 +140,11 @@ class Views{
        console.log("NOME CATEGORIA: "+nomeCategoria);
        console.log("ID CATEGORIA: "+idCategoria);
 
+        if(Sessao.bdLogado!="logado"){
+	      	app.viewLogin();
+            return;
+	    }
+
        this._content.html(`
             
                <div class="row view-dashboard novo-atendimento" view-name="view-dashboard">
@@ -2981,8 +2986,8 @@ class Views{
             
                <div class="row view-login" view-name="view-login">
                   <div class="col-12 wow fadeInRight" data-wow-delay="0.0s" data-wow-duration="0.3s">
-                     <h2>Bem vindo,</h2>
-                     <p>Se identifique para entrar no aplicativo</p>
+                     <h2>Faça Login ou cadastre-se,</h2>
+                     <p>Para enviar uma solicitação, você precisa primeiro estar identificado:</p>
                      
                      <form method="post" action="javascript:void(0)" onsubmit="app.procLoginSms(event)">
                         <div class="form-group">
@@ -3005,6 +3010,10 @@ class Views{
                                Versão ${app.appVersion}
                             </a>
                           </div>
+
+                          <p style="text-align:center;font-size:11px;padding-top:20px;">
+                    <a href="javascript:void(0)" onclick="app.opcoesCarretamentoPerfilCliente();" title="VOLTAR AO INÍCNIO" style="color:#747474;text-decoration:none;">VOLTAR AO INÍCIO</a>
+                </p>
                      
                      <!--
                        <div class="form-group link-apoio text-center">
