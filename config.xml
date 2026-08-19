@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.fabricadeplugins.aaguiachegou"
-        version   = "1.4.11">
+        version   = "1.4.12">
 
         <!-- LEMBRAR DE MUDAR O APP ID ANTES DE SUBIR O APP NAS LOJAS -->
 
@@ -121,7 +121,7 @@
     <platform name="ios">
         <splash src="www/assets/images/icones/1024x1024.png" />
 
-        <preference name="deployment-target" value="13.0" />
+        <preference name="deployment-target" value="15.0" />
         <preference name="WKWebViewOnly" value="true" />
         
         <allow-intent href="itms:*" />
