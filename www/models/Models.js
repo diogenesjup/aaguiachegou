@@ -103,6 +103,38 @@ class Models{
 
     }
 
+    // CONSULTAR LIBERAÇÕES DE SISTEMAS DE PAGAMENTO
+    liberacoes() {
+        // Retornamos a Promise. Isso avisa o JS que ele deve esperar por um "resolve"
+        return new Promise((resolve, reject) => {
+            
+            // INICIO CHAMADA AJAX
+            var request = $.ajax({
+                method: "POST",
+                url: app.urlApi + "liberacoes",
+                data: { token: app.token }
+            });
+
+            request.done(function (dados) {            
+                console.log("%c RETORNO LIBERAÇÕES","background:#ff0000;color:#fff;");
+                console.log(dados);
+
+                if (dados.liberacoes == "200") {
+                    resolve(true); // Resolvemos a promessa liberando (true)
+                } else {
+                    resolve(false); // Resolvemos a promessa bloqueando (false)
+                }
+            });
+
+            request.fail(function (dados) {                                        
+                aviso("Oops! Algo deu errado", "Nossos servidores estão passando por dificuldades técnicas, tente novamente em alguns minutos");
+                resolve(false); // Resolvemos com false em caso de erro para não travar a tela
+            });
+            // FINAL CHAMADA AJAX
+            
+        });
+    }
+
     // PROC LOGIN SMS
     procLoginSms(){
        

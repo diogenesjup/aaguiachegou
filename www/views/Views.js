@@ -20,6 +20,13 @@ class Views{
 
     viewPrincipal(){
 
+            // USUÁRIO JÁ ESTAVA EM UM FLUXO DE LOGIN / CADASTRO
+            if(localStorage.getItem("posLoginAtivacao")=="sim"){
+
+                  app.views.novoAtendimento(localStorage.getItem("posLoginIdCategoria"),localStorage.getItem("posLoginNomeCategoria"));
+                  return;
+            }
+
             this._content.html(`
             
                <div class="row view-inicial inicial" view-name="view-dashboard">
@@ -140,10 +147,21 @@ class Views{
        console.log("NOME CATEGORIA: "+nomeCategoria);
        console.log("ID CATEGORIA: "+idCategoria);
 
-        if(Sessao.bdLogado!="logado"){
+        if(localStorage.getItem("bdLogado")!="logado"){
+
+            console.log("Salvando informações para o pós o login:");
+
+            localStorage.setItem("posLoginIdCategoria",idCategoria);
+            localStorage.setItem("posLoginNomeCategoria",nomeCategoria);
+            localStorage.setItem("posLoginAtivacao","sim");
+
 	      	app.viewLogin();
             return;
-	    }
+	    }else{
+         localStorage.setItem("posLoginIdCategoria",null);
+         localStorage.setItem("posLoginNomeCategoria",null);
+         localStorage.setItem("posLoginAtivacao",null);
+       }
 
        this._content.html(`
             
@@ -1425,7 +1443,9 @@ class Views{
 
 
 
-    resumoSaldoProfissional(){
+    async resumoSaldoProfissional(){
+
+            let liberarCompra = await app.models.liberacoes();
         
             this._content.html(`
             
@@ -1436,20 +1456,38 @@ class Views{
                        Esse é o seu saldo atual: <img src="assets/images/saldo.svg" style="width:16px;margin-top:-3px;" /> ${localStorage.getItem("saldoPrestadorServico")}
                      </h2>
                      
-                     <p style="font-size: 13px;width:80%;margin-bottom:30px;">
-                       O saldo <b>${app.nomeMoedaPlural}</b> é o que você utiliza para desbloquear os orçamento dentro da plataforma. 
-                       Você pode comprar novos pacotes de ${app.nomeMoedaPlural} sempre que quiser:
-                     </p>
+                     ${liberarCompra ? `
 
-                     <p style="font-size: 13px;width:80%;margin-bottom:30px;">
-                       Se você já fez uma compra, <b>pode demorar até 30 minutos</b> após a confirmação do pagamento para que seu saldo seja atualizado
-                     </p>
+                        <p style="font-size: 13px;width:80%;margin-bottom:30px;">
+                              O saldo <b>${app.nomeMoedaPlural}</b> é o que você utiliza para desbloquear os orçamento dentro da plataforma. 
+                              Você pode comprar novos pacotes de ${app.nomeMoedaPlural} sempre que quiser:
+                        </p>
 
-                     <p>
-                        <a href="javascript:void(0)" onclick="app.comprarChaves();" style="padding-top:6px;" class="btn btn-primary" title="Comprar MOEDAS">
-                          COMPRAR ${app.nomeMoedaPlural}
-                        </a>
-                     </p>
+                        <p style="font-size: 13px;width:80%;margin-bottom:30px;">
+                              Se você já fez uma compra, <b>pode demorar até 30 minutos</b> após a confirmação do pagamento para que seu saldo seja atualizado
+                        </p>
+                        <p>
+                              <a href="javascript:void(0)" onclick="app.comprarChaves();" style="padding-top:6px;" class="btn btn-primary" title="Comprar ${app.nomeMoedaPlural}">
+                                 COMPRAR ${app.nomeMoedaPlural}
+                              </a>
+                        </p>
+
+                     ` : `
+                     
+                        <p style="font-size: 13px;width:80%;margin-bottom:30px;">
+                              O saldo <b>${app.nomeMoedaPlural}</b> é o que você utiliza para desbloquear os orçamento dentro da plataforma. 
+                              Você pode receber novos pacotes de ${app.nomeMoedaPlural} sempre que um cliente aceitar as suas propostas, e te avaliar de forma positiva na plataforma.
+                        </p>
+                        <p style="font-size: 13px;width:80%;margin-bottom:30px;">
+                              Quanto mais orçamentos você enviar e com mais clientes conversar, maiores serão suas chances de ganhar novos pacotes de ${app.nomeMoedaPlural}.
+                        </p>
+                        <p>
+                              <a href="javascript:void(0)" onclick="app.viewPrincipalProfissional()" style="padding-top:6px;" class="btn btn-primary" title="VER ORÇAMENTOS DISPONÍVEIS">
+                                 VER ORÇAMENTOS DISPONÍVEIS
+                              </a>
+                        </p>
+                     
+                     `}
 
                   </div>
                </div>
@@ -1457,6 +1495,9 @@ class Views{
             `);
 
             this.animarTransicao();
+
+            console.log("Teste valor variavel:");
+            console.log(liberarCompra);
 
     }
 
@@ -3009,6 +3050,11 @@ class Views{
                             <a href="javascript:void(0)" title="Versão do Aplicativo" style="padding-top:20px;font-size:13px;">
                                Versão ${app.appVersion}
                             </a>
+                            <p style="padding-top:12px;">
+                              <a href="javascript:void(0)" title="Nossa política de Privacidade" onclick="abrirUrl('https://aaguiachegou.com.br/')">
+                                 Política de Privaciliade
+                              </a>
+                            </p>
                           </div>
 
                           <p style="text-align:center;font-size:11px;padding-top:20px;">

@@ -63,6 +63,13 @@ class App {
 
     inicio(){
 
+        // USUÁRIO JÁ ESTAVA EM UM FLUXO DE LOGIN / CADASTRO
+        if(localStorage.getItem("posLoginAtivacao")=="sim"){
+
+            this.views.novoAtendimento(localStorage.getItem("posLoginIdCategoria"),localStorage.getItem("posLoginNomeCategoria"));
+            return;
+        }
+
         this.views.viewPrincipal();
         this.views.ativarMenuUm();
 
@@ -718,7 +725,7 @@ filtrotabela(){
     /* ABRIR OU FECHAR O MENU CLIENTE */
     abrirFecharMenuCliente(){
 
-       if(Sessao.bdLogado!="logado"){
+       if(localStorage.getItem("bdLogado")!="logado"){
 	      	app.viewLogin();
 	      	return;
 	    }  
@@ -825,6 +832,18 @@ class Sessao{
     	this.dadosUsuario = dadosUsuario;
     	localStorage.setItem("bdLogado","logado");
         localStorage.setItem("idUsuario",this.idUsuario);
+
+        //localStorage.setItem("posLoginIdCategoria",null);
+        //localStorage.setItem("posLoginNomeCategoria",null);
+        //localStorage.setItem("posLoginAtivacao",null);
+
+        // USUÁRIO JÁ ESTAVA EM UM FLUXO DE LOGIN / CADASTRO
+        if(localStorage.getItem("posLoginAtivacao")=="sim"){
+
+            app.views.novoAtendimento(localStorage.getItem("posLoginIdCategoria"),localStorage.getItem("posLoginNomeCategoria"));
+            return;
+        }
+
         
         // DIRECIONAR O USUÁRIO PARA O INÍCIO
     	app.inicio();

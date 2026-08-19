@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.fabricadeplugins.aaguiachegou"
-        version   = "1.4.10">
+        version   = "1.4.11">
 
         <!-- LEMBRAR DE MUDAR O APP ID ANTES DE SUBIR O APP NAS LOJAS -->
 
@@ -57,7 +57,7 @@
 
     <!--
     <plugin name="cordova-plugin-android-permissions" />
-    <plugin name="cordova-plugin-inappbrowser" />
+    
     <plugin name="cordova-plugin-statusbar" />
     <preference name="StatusBarBackgroundColor" value="#303030" />
     -->
@@ -71,7 +71,7 @@
     </feature>
     <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
     -->
-    
+    <plugin name="cordova-plugin-inappbrowser" />
 
     <platform name="android">
 
