@@ -193,6 +193,47 @@ $(document).ready(function() {
 // ABRIR URL`s EXTERNAS`
 function abrirUrl(url){
 
+  /*
+  
+  1) O location faz o que?
+  Ele define se a barra de endereços do navegador (onde aparece a URL) será exibida ou não no topo da tela.
+  location=yes: Mostra a barra (o usuário vê a URL e os botões nativos de fechar/voltar).
+  location=no: Esconde completamente a barra.
+
+  2) O hidden faz o que?
+  Ele define se o navegador vai abrir invisível em segundo plano.
+  hidden=yes: A janela abre, carrega a URL, mas o usuário não vê nada. Isso é ótimo para a experiência do usuário: você pode carregar a página em segundo plano e usar o evento loadstop para exibir a janela (ref.show()) apenas quando o site estiver 100% carregado, evitando telas brancas de carregamento.
+  hidden=no: Abre a janela imediatamente por cima do seu app, mesmo que o site ainda esteja carregando.
+  
+  3) O hardwareback faz o que?
+  Esse parâmetro é exclusivo para Android e controla o comportamento do botão físico de voltar do celular.
+  hardwareback=yes (Padrão): Se o usuário navegou por várias páginas dentro do InAppBrowser, apertar "voltar" no celular vai para a página anterior do site. Ele só fecha o InAppBrowser se não houver mais histórico.
+  hardwareback=no: Apertar o botão "voltar" do celular fecha o InAppBrowser imediatamente, não importando quantas páginas o usuário navegou lá dentro.
+
+  6) É possível que a URL aberta devolva valores para o JS do app?
+  Sim, absolutamente! Existe uma comunicação de mão dupla muito boa no InAppBrowser.
+  Da página externa PARA o seu App (via postMessage):
+  Dentro do site que você abriu (se você tiver controle sobre o código fonte dele), você pode disparar mensagens assim:
+
+  // Código no site externo
+  var mensagem = { acao: "pagamento_concluido", id: 123 };
+  webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify(mensagem));
+
+  No seu App, você "escuta" essa mensagem:
+  // Código no seu App Cordova
+  var ref = cordova.InAppBrowser.open(url, '_blank', 'location=no');
+
+  ref.addEventListener('message', function(params){
+      console.log("Recebi do site externo: ", params.data);
+  });
+
+  Do seu App PARA a página externa:
+  Você também pode injetar Javascript ou chamar funções que estão lá no site:
+
+  // Executa algo lá dentro do site externo
+  ref.executeScript({ code: "alert('Olá do Cordova!');" });
+  
+  */
   cordova.InAppBrowser.open(url, '_blank', 'location=yes,hidden=no,hardwareback=no');
 
 }
